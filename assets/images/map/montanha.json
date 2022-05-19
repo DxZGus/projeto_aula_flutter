@@ -1,0 +1,14 @@
+{ "columns":18,
+ "image":"forestCliff_.png",
+ "imageheight":976,
+ "imagewidth":288,
+ "margin":0,
+ "name":"montanha",
+ "spacing":0,
+ "tilecount":1098,
+ "tiledversion":"1.8.4",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.8"
+}
