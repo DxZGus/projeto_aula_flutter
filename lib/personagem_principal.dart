@@ -2,9 +2,10 @@ import 'package:bonfire/bonfire.dart';
 import 'package:bonfire_projeto/main.dart';
 import 'package:bonfire_projeto/player_sprite_sheets.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 
-class Personagem extends SimplePlayer with ObjectCollision{
+class Personagem extends SimplePlayer with ObjectCollision,Lighting{
   bool canMove= true;
   Personagem(Vector2 position)
       : super(size: Vector2(TileSize,TileSize),
@@ -15,7 +16,7 @@ class Personagem extends SimplePlayer with ObjectCollision{
            runRight: PlayerSpriteSheet.heroRunRight,
            runLeft: PlayerSpriteSheet.heroRunLeft,
        ),
-    speed: 100,
+    speed: 70,
 
 
   ){
@@ -30,6 +31,8 @@ class Personagem extends SimplePlayer with ObjectCollision{
             ),
           ],
         ),
+    );
+    setupLighting(LightingConfig(radius: TileSize * 1, color: Colors.transparent),
     );
   }
 
@@ -46,12 +49,12 @@ class Personagem extends SimplePlayer with ObjectCollision{
   }
   @override
   void joystickAction(JoystickActionEvent event) {
-    if(event.event == ActionEvent.DOWN && event.id==1 && event.id == LogicalKeyboardKey.space) {
+    if(event.event == ActionEvent.DOWN && event.id==1 || event.id==LogicalKeyboardKey.space) {
       _executeAttack();
     }super.joystickAction(event);
   }
 
-  @override
+
   void _executeAttack(){
     simpleAttackMelee(damage: 20,
       size:Vector2(TileSize *0.7, TileSize * 0.7),

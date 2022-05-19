@@ -59,13 +59,16 @@ class MyHomePage extends StatelessWidget {
       ),
       cameraConfig: CameraConfig(
         moveOnlyMapArea: true,
-        zoom: 2,
+        zoom: 1.7,
         smoothCameraEnabled: true,
+        smoothCameraSpeed: 4,
+
         sizeMovementWindow: Vector2(
-            TileSize * 3,
-            TileSize * 3,
+            TileSize * 2,
+            TileSize * 2,
         ),
       ),
+      lightingColorGame: Colors.black.withOpacity(0.8),
 
     );
   }

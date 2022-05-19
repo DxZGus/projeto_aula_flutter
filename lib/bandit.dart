@@ -19,7 +19,7 @@ class Bandit extends SimpleEnemy with ObjectCollision {
       runRight: BanditSpriteSheet.banditRunRight,
       runLeft: BanditSpriteSheet.banditRunLeft,
     ),
-    speed: 35,
+    speed: 25,
     life: 100,
 
   ) {
