@@ -103,9 +103,64 @@
          "width":40,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":3,
+         "name":"Inimigos",
+         "objects":[
+                {
+                 "height":16,
+                 "id":1,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":513,
+                 "y":102.5
+                }, 
+                {
+                 "height":16,
+                 "id":2,
+                 "name":"bandit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":578.5,
+                 "y":187.5
+                }, 
+                {
+                 "height":16,
+                 "id":3,
+                 "name":"bandit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":419,
+                 "y":526
+                }, 
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"bandit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":616,
+                 "y":244
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":3,
- "nextobjectid":1,
+ "nextlayerid":4,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.4",

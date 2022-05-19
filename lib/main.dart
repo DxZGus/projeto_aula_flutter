@@ -1,4 +1,5 @@
 import 'package:bonfire/bonfire.dart';
+import 'package:bonfire_projeto/bandit.dart';
 import 'package:bonfire_projeto/personagem_principal.dart';
 import 'package:flutter/material.dart';
 
@@ -32,10 +33,26 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BonfireTiledWidget(
       joystick: Joystick(
-        directional: JoystickDirectional(),
-      ),
+        keyboardConfig: KeyboardConfig(
+          keyboardDirectionalType: KeyboardDirectionalType.arrows
+        ),
+        directional: JoystickDirectional(
+          color: Colors.black12,
+        ),
+        actions: [
+          JoystickAction(
+              actionId: 1,
+              color: Colors.black12,
+              margin: const EdgeInsets.all(40),
+          ),]),
+
+
+
       map: TiledWorldMap(
         'map/floresta.json',
+        objectsBuilder: {
+          'bandit':(properties)=>Bandit(properties.position)
+        },
         forceTileSize:   Size(TileSize,TileSize),
       ),
       player:  Personagem(Vector2(14*TileSize,14*TileSize),
@@ -43,6 +60,7 @@ class MyHomePage extends StatelessWidget {
       cameraConfig: CameraConfig(
         moveOnlyMapArea: true,
         zoom: 2,
+        smoothCameraEnabled: true,
         sizeMovementWindow: Vector2(
             TileSize * 3,
             TileSize * 3,
