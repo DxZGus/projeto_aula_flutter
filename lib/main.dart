@@ -1,7 +1,10 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:bonfire_projeto/bandit.dart';
+import 'package:bonfire_projeto/lamp.dart';
 import 'package:bonfire_projeto/personagem_principal.dart';
+import 'package:bonfire_projeto/player_overlay.dart';
 import 'package:flutter/material.dart';
+
 
 final double TileSize = 32;
 void main() {
@@ -51,12 +54,22 @@ class MyHomePage extends StatelessWidget {
       map: TiledWorldMap(
         'map/floresta.json',
         objectsBuilder: {
-          'bandit':(properties)=>Bandit(properties.position)
+
+          'bandit':(properties)=>Bandit(properties.position),
+          'lamp':(properties)=>Lamp(properties.position),
+
         },
         forceTileSize:   Size(TileSize,TileSize),
       ),
       player:  Personagem(Vector2(14*TileSize,14*TileSize),
       ),
+      overlayBuilderMap: {
+        'playerInterface':(context, game) =>PlayerInterface(game: game, )
+      },
+      initialActiveOverlays: const [
+        PlayerInterface.overlayKey,
+      ],
+
       cameraConfig: CameraConfig(
         moveOnlyMapArea: true,
         zoom: 1.7,
@@ -68,7 +81,7 @@ class MyHomePage extends StatelessWidget {
             TileSize * 2,
         ),
       ),
-      lightingColorGame: Colors.black.withOpacity(0.8),
+      lightingColorGame: Colors.black.withOpacity(0.4),
 
     );
   }

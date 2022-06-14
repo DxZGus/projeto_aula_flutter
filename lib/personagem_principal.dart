@@ -32,7 +32,11 @@ class Personagem extends SimplePlayer with ObjectCollision,Lighting{
           ],
         ),
     );
-    setupLighting(LightingConfig(radius: TileSize * 1, color: Colors.transparent),
+    setupLighting(LightingConfig(
+        radius: TileSize * 1,
+        color: Colors.transparent,
+        blurBorder: TileSize * 1,
+    ),
     );
   }
 
@@ -51,6 +55,8 @@ class Personagem extends SimplePlayer with ObjectCollision,Lighting{
   void joystickAction(JoystickActionEvent event) {
     if(event.event == ActionEvent.DOWN && event.id==1 || event.id==LogicalKeyboardKey.space) {
       _executeAttack();
+
+      
     }super.joystickAction(event);
   }
 
@@ -88,6 +94,24 @@ class Personagem extends SimplePlayer with ObjectCollision,Lighting{
     }
     super.receiveDamage(attacker, damage, identify);
   }
+
+
+  void onTap(){
+    TalkDialog.show(context, [
+      Say(
+        text:[
+          const TextSpan(text: 'e esse é o meu projeto de flutter'),
+        ],
+        person: SizedBox(
+          height: 100,
+          width: 100,
+          child: PlayerSpriteSheet.heroIdleRight.asWidget(),
+
+    ),
+
+      ),]);
+  }
+
   @override
   void die() {
 
