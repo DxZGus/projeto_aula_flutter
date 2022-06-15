@@ -1,5 +1,7 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:bonfire_projeto/bandit.dart';
+import 'package:bonfire_projeto/game.dart';
+import 'package:bonfire_projeto/home_page.dart';
 import 'package:bonfire_projeto/lamp.dart';
 import 'package:bonfire_projeto/personagem_principal.dart';
 import 'package:bonfire_projeto/player_overlay.dart';
@@ -18,72 +20,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Projeto Gustavo Martim',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BonfireTiledWidget(
-      joystick: Joystick(
-        keyboardConfig: KeyboardConfig(
-          keyboardDirectionalType: KeyboardDirectionalType.arrows
-        ),
-        directional: JoystickDirectional(
-          color: Colors.black12,
-        ),
-        actions: [
-          JoystickAction(
-              actionId: 1,
-              color: Colors.black12,
-              margin: const EdgeInsets.all(40),
-          ),]),
-
-
-
-      map: TiledWorldMap(
-        'map/floresta.json',
-        objectsBuilder: {
-
-          'bandit':(properties)=>Bandit(properties.position),
-          'lamp':(properties)=>Lamp(properties.position),
-
-        },
-        forceTileSize:   Size(TileSize,TileSize),
-      ),
-      player:  Personagem(Vector2(14*TileSize,14*TileSize),
-      ),
-      overlayBuilderMap: {
-        'playerInterface':(context, game) =>PlayerInterface(game: game, )
-      },
-      initialActiveOverlays: const [
-        PlayerInterface.overlayKey,
-      ],
-
-      cameraConfig: CameraConfig(
-        moveOnlyMapArea: true,
-        zoom: 1.7,
-        smoothCameraEnabled: true,
-        smoothCameraSpeed: 4,
-
-        sizeMovementWindow: Vector2(
-            TileSize * 2,
-            TileSize * 2,
-        ),
-      ),
-      lightingColorGame: Colors.black.withOpacity(0.4),
-
-    );
-  }
-}
-
